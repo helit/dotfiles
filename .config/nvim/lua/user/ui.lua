@@ -23,31 +23,6 @@ require("nightfox").setup({
 
 vim.cmd("colorscheme nightfox")
 
--- nvim tree setup
-require("nvim-tree").setup({
-	sort_by = "name",
-	view = {
-		width = 30,
-		side = "left",
-	},
-	renderer = {
-		icons = {
-			show = {
-				git = true,
-				folder = true,
-				file = true,
-				folder_arrow = true,
-			},
-		},
-	},
-	git = {
-		enable = true,
-	},
-	filters = {
-		dotfiles = false,
-	},
-})
-
 -- lualine
 require("lualine").setup({
 	options = {

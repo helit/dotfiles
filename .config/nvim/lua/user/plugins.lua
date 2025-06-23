@@ -14,10 +14,11 @@ require("conform").setup({
 	},
 })
 
--- mini pairs
+-- mini.nvim
 add("echasnovski/mini.nvim")
 
 require("mini.pairs").setup({})
+require("mini.completion").setup({})
 
 -- telescope
 add("nvim-lua/plenary.nvim")
@@ -43,37 +44,56 @@ require("telescope").setup({
 	},
 })
 
+-- neo-tree
+add("MunifTanjim/nui.nvim")
+add("nvim-neo-tree/neo-tree.nvim", {
+	branch = "v3.x",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons",
+		"MunifTanjim/nui.nvim",
+	},
+})
+
+require("neo-tree").setup({
+	close_if_last_window = true,
+	enable_git_status = true,
+	enable_diagnostics = false,
+	filesystem = {
+		filtered_items = {
+			visible = true,
+			hide_dotfiles = false,
+			hide_gitignored = true,
+		},
+		follow_current_file = { enabled = true },
+		use_libuv_file_watcher = true,
+	},
+	window = {
+		position = "left",
+		width = 30,
+		mappings = {
+			["<space>"] = "toggle_node",
+			["<cr>"] = "open",
+			["S"] = "open_split",
+			["s"] = "open_vsplit",
+			["q"] = "close_window",
+		},
+	},
+})
+
 -- copilot
 add("zbirenbaum/copilot.lua")
-add("zbirenbaum/copilot-cmp")
-add("hrsh7th/nvim-cmp")
-add("hrsh7th/cmp-nvim-lsp")
 
 require("copilot").setup({
-	suggestion = { enabled = true },
+	suggestion = {
+		enabled = true,
+		auto_trigger = true,
+		keymap = {
+			accept = "<C-l>", -- or your preferred key
+		},
+	},
 	panel = { enabled = false },
 })
-
-local cmp = require("cmp")
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end,
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<Tab>"] = cmp.mapping.select_next_item(),
-		["<S-Tab>"] = cmp.mapping.select_prev_item(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-	}),
-	sources = cmp.config.sources({
-		{ name = "copilot" },
-		{ name = "nvim_lsp" },
-	}),
-})
-
-require("copilot_cmp").setup()
 
 -- copilot chat
 add("CopilotC-Nvim/CopilotChat.nvim", {
@@ -109,6 +129,5 @@ require("which-key").setup({
 
 -- theme
 add("EdenEast/nightfox.nvim")
-add("kyazdani42/nvim-tree.lua")
 add("nvim-lualine/lualine.nvim")
 add("akinsho/bufferline.nvim")

@@ -32,17 +32,14 @@ later(function()
 	end, { desc = "Help tags" })
 end)
 
--- nvim tree
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle File Explorer" })
+-- neotree
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle File Explorer" })
 
 -- bufferline
--- Move to next buffer
 vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
 
--- Move to previous buffer
 vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
 
--- Go to buffer by number (1-9)
 for i = 1, 9 do
 	vim.keymap.set("n", "<leader>" .. i, function()
 		require("bufferline").go_to_buffer(i, true)
