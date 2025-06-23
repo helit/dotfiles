@@ -5,14 +5,3 @@ padding = { x = 4, y = 4 }
 [font]
 normal = { family = "Hack Nerd Font Mono", style = "Regular" }
 size = 16.0
-
-[[keyboard.bindings]]
-key = "V"
-mods = "Command|Shift"
-chars = "cd $HOME/Code/Volvo && ls -ln\n"
-
-[[keyboard.bindings]]
-key = "H"
-mods = "Command|Shift"
-chars = "cd $HOME && ls -ln\n"
-
