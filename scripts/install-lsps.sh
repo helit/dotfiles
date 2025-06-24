@@ -20,6 +20,14 @@ else
   echo "TypeScript LSP already installed"
 fi
 
+# ESLint LSP
+if ! command -v vscode-eslint-language-server &>/dev/null; then
+  echo "Installing ESLint LSP..."
+  npm install -g vscode-langservers-extracted
+else
+  echo "ESLint LSP already installed"
+fi
+
 # Rust
 if ! command -v rust-analyzer &>/dev/null; then
   echo "Installing rust-analyzer..."

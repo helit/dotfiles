@@ -40,11 +40,5 @@ vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" 
 
 vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
 
-for i = 1, 9 do
-	vim.keymap.set("n", "<leader>" .. i, function()
-		require("bufferline").go_to_buffer(i, true)
-	end, { desc = "Go to buffer " .. i })
-end
-
--- copilot chat
+-- copilot
 vim.keymap.set("n", "<leader>cc", ":CopilotChat<CR>", { desc = "Open Copilot Chat" })

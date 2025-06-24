@@ -26,9 +26,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 -- format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    local conform = require("conform")
-    conform.format({ async = false })
-  end,
+	pattern = "*",
+	callback = function()
+		local conform = require("conform")
+		conform.format({ async = false })
+	end,
 })

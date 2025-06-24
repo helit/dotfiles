@@ -3,6 +3,22 @@ local now, add, later = require("user").setup()
 -- lsp config
 add("neovim/nvim-lspconfig")
 
+require("lspconfig").eslint.setup({
+	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = true
+	end,
+})
+
+require("lspconfig").ts_ls.setup({})
+
+vim.diagnostic.config({
+	virtual_text = false, -- show inline diagnostics
+	signs = true, -- show signs in the gutter
+	underline = true, -- underline issues in the code
+	update_in_insert = false, -- avoid showing diagnostics while typing
+	severity_sort = true, -- sort diagnostics by severity
+})
+
 -- conform
 add("stevearc/conform.nvim")
 
@@ -89,7 +105,7 @@ require("copilot").setup({
 		enabled = true,
 		auto_trigger = true,
 		keymap = {
-			accept = "<C-l>", -- or your preferred key
+			accept = "<C-l>",
 		},
 	},
 	panel = { enabled = false },
@@ -127,7 +143,10 @@ require("which-key").setup({
 	},
 })
 
+-- git (fugitive)
+add("tpope/vim-fugitive")
+
 -- theme
-add("EdenEast/nightfox.nvim")
+add("folke/tokyonight.nvim")
 add("nvim-lualine/lualine.nvim")
 add("akinsho/bufferline.nvim")

@@ -1,27 +1,9 @@
 -- theme
-require("nightfox").setup({
-	options = {
-		-- Transparent background (true/false)
-		transparent = false,
-
-		-- Styles for different syntax groups
-		styles = {
-			comments = "italic",
-			keywords = "bold",
-			functions = "NONE",
-			variables = "NONE",
-		},
-
-		-- Inverse highlights for matching parentheses, visual selection, etc.
-		inverse = {
-			match_paren = true,
-			visual = false,
-			search = false,
-		},
-	},
+require("tokyonight").setup({
+	style = "storm", -- or "night", "storm", "day"
 })
 
-vim.cmd("colorscheme nightfox")
+vim.cmd.colorscheme("tokyonight")
 
 -- lualine
 require("lualine").setup({
